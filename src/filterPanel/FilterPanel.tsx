@@ -27,12 +27,13 @@ export function FilterPanel({
     return debounce((filters) => {
       const filteredNotes = filterNotes(filters);
       updateFilteredNotes(filteredNotes);
+      // Really only needs to be called when the note filter changes, but this is fine.
       updateNoteFilter(filters.note);
       resetPagination();
     }, 300);
   }, [updateFilteredNotes, updateNoteFilter, resetPagination]);
 
-  // The unioned value does not ensure this function is used correctly.
+  // The unioned value does not fully ensure this function is used correctly.
   // It ensures the correct keys are being used, but not that the
   // key type matches the expected value type. Consider another approach.
   const handleFilterChange = useCallback(
@@ -44,7 +45,7 @@ export function FilterPanel({
       setFilterOptions(nextFilterOptions);
       debouncedSearch(nextFilterOptions);
     },
-    [filterOptions, debouncedSearch],
+    [filterOptions, debouncedSearch, setFilterOptions],
   );
 
   // Run search notes with empty filters on page load

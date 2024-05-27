@@ -1,10 +1,9 @@
-import { Box, Paper } from "@mui/material";
-import "./App.css";
-import { NotePage } from "./notePage/NotePage";
+import { Box } from "@mui/material";
+import { NoteList } from "./noteList/NoteList";
 import { FilterPanel } from "./filterPanel/FilterPanel";
 import { useState } from "react";
 import { INote } from "./types";
-import { IFilterOptions } from "./filterPanel/filterNotes";
+import "./App.css";
 
 /*
 Usually we would want to use something like React Router at
@@ -49,7 +48,7 @@ function App() {
           flexGrow: 1,
         }}
       >
-        <NotePage
+        <NoteList
           filteredNotes={filteredNotes}
           noteFilter={noteFilter}
           pageNumber={pageNumber}

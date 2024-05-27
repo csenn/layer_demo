@@ -14,7 +14,7 @@ type NotePageProps = {
   updatePageNumber: (pageNumber: number) => void;
 };
 
-export function NotePage({
+export function NoteList({
   filteredNotes,
   noteFilter,
   pageNumber,
@@ -44,7 +44,7 @@ export function NotePage({
         {pagePatients.map((group) => (
           <Box key={group.id} sx={{ marginBottom: "20px" }}>
             <Paper sx={{ marginBottom: "30px" }}>
-              {/* Assume patient can be found for each note, just check for safety */}
+              {/* We assume patient can be found for each note, but just check for safety */}
               {!!patients[group.id] && (
                 <PatientDetails patient={patients[group.id]} />
               )}

@@ -43,5 +43,4 @@ That would probably be more of a "data analysis" or search type UX, rather than 
 - Just use React State instead of state management for simplicity
 - The Provider and Patient Select would be better as a typeahead of some sort
 - Assume data is valid, such as note.patient_id resolving to a note
-- It's hard to copy/paste in a note because it gets collapsed on click, that UX should be improved
 - Testing - Didn't add testing due to time constraints, a UI like this would probably do well with a Cypress test framework, along with some Unit tests

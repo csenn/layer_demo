@@ -66,13 +66,8 @@ export function PatientNote({ note, noteIndex, noteFilter }: NoteProps) {
 
       <Box>
         <Box
-          onClick={toggleCollapse}
           sx={{
             display: "flex",
-            cursor: "pointer",
-            ":hover": {
-              background: "rgb(250,250,250)",
-            },
           }}
         >
           <Box
@@ -94,11 +89,13 @@ export function PatientNote({ note, noteIndex, noteFilter }: NoteProps) {
             />
           </Box>
           <Box
+            onClick={toggleCollapse}
             sx={{
               verticalAlign: "center",
               minWidth: "50px",
               textAlign: "center",
               paddingTop: "25px",
+              cursor: "pointer",
             }}
           >
             {isCollapsed ? <ExpandLessIcon /> : <ExpandMoreIcon />}
