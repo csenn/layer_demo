@@ -52,7 +52,7 @@ export function FilterPanel({
     debouncedSearch({});
   }, []);
 
-  const { hospitalNames, providerNames, genders } = useMemo(
+  const { hospitalNames, providerNames, genders, patientNames } = useMemo(
     () => getMockDataLists(),
     [],
   );
@@ -73,6 +73,13 @@ export function FilterPanel({
           <TextFilter
             value={filterOptions.note || ""}
             onChange={(value) => handleFilterChange("note", value)}
+          />
+        </FilterWrapper>
+        <FilterWrapper label="Patient Name">
+          <DropdownFilter
+            value={filterOptions.patientName || ""}
+            onChange={(value) => handleFilterChange("patientName", value)}
+            options={patientNames}
           />
         </FilterWrapper>
         <FilterWrapper label="Hospital Name">

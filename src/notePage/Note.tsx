@@ -60,7 +60,7 @@ export function PatientNote({ note, noteIndex, noteFilter }: NoteProps) {
 
         <Box>
           <RowLabel label="Created" />
-          {dayjs(note.creation_date).format("DD/MM/YYYY")}
+          {dayjs(note.creation_date).format("MM/DD/YYYY")}
         </Box>
       </Box>
 

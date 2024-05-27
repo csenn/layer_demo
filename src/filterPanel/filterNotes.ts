@@ -4,6 +4,7 @@ import dayjs from "dayjs";
 
 export interface IFilterOptions {
   note?: string;
+  patientName?: string;
   hospitalName?: string;
   providerName?: string;
   maxAge?: number;
@@ -16,7 +17,7 @@ export interface IFilterOptions {
  * We do all checks in a single filter function. Another options
  * would be to chain filter functions together. This approach
  * is more efficient because we are only doing a single pass,
- * but slightly less "composable" and nice to test.
+ * but slightly less "functional" and nice to test.
  */
 export function filterNotes(filterOptions: IFilterOptions): INote[] {
   const patients = getMockPatients();
@@ -42,6 +43,14 @@ export function filterNotes(filterOptions: IFilterOptions): INote[] {
       return false;
     }
 
+    // Looking for exact match on name, in reality would want partial matches on names
+    if (
+      filterOptions.patientName &&
+      patient.name !== filterOptions.patientName
+    ) {
+      return false;
+    }
+
     const patientAge = dayjs().diff(patient.date_of_birth, "year");
 
     // Check if the age is over maxAge (ignore age of 0)
@@ -64,8 +73,6 @@ export function filterNotes(filterOptions: IFilterOptions): INote[] {
     ) {
       return false;
     }
-
-    console.log("asadsasd");
 
     return true;
   });

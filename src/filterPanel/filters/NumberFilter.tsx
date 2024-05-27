@@ -1,4 +1,5 @@
-import { TextField } from "@mui/material";
+import { Box, TextField, IconButton } from "@mui/material";
+import ClearIcon from "@mui/icons-material/Clear";
 
 type NumberFilterProps = {
   value: number | undefined;
@@ -7,12 +8,19 @@ type NumberFilterProps = {
 
 export function NumberFilter({ value, onChange }: NumberFilterProps) {
   return (
-    <TextField
-      type="number"
-      variant="outlined"
-      size="small"
-      value={value}
-      onChange={(e) => onChange(Number(e.target.value))}
-    />
+    <Box sx={{ display: "flex", alignItems: "center" }}>
+      <TextField
+        type="number"
+        variant="outlined"
+        size="small"
+        value={value || ""}
+        onChange={(e) => onChange(Number(e.target.value))}
+      />
+      <Box>
+        <IconButton size="small" onClick={() => onChange(undefined)}>
+          <ClearIcon fontSize="inherit" />
+        </IconButton>
+      </Box>
+    </Box>
   );
 }

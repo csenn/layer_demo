@@ -51,6 +51,7 @@ export function NotePage({
 
               {group.notes.map((note, index) => (
                 <PatientNote
+                  key={note.id}
                   note={note}
                   noteIndex={index}
                   noteFilter={noteFilter}
